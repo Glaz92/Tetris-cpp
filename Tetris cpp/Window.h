@@ -7,14 +7,12 @@ class Window
 {
 private:
 	static Window * window;
+	sf::RenderWindow renderWindow;
 
 	Window();
 	~Window();
 
 public:
-	static Window * get();
-
-	void someFunc();
-
+	static sf::RenderWindow * get()
 };
 
