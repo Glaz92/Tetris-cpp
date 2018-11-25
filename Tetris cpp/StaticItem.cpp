@@ -1,10 +1,11 @@
 #include "StaticItem.h"
 
+StaticItem * StaticItem::item = nullptr;
+
 StaticItem::StaticItem()
-	: state(MAIN_MENU)
+	: state(State::MainMenu)
 {
-	font.loadFromFile("data/font/font.ttf");
-	gameState.push_back(MainMenu::get());
+	gameState.emplace(std::make_pair(State::MainMenu,MainMenu::get()));
 }
 
 

@@ -13,6 +13,6 @@ private:
 	~Window();
 
 public:
-	static sf::RenderWindow * get()
+	static sf::RenderWindow * get();
 };
 

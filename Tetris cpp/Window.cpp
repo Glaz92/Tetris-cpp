@@ -22,4 +22,3 @@ sf::RenderWindow * Window::get()
 
 	return &(window->renderWindow);
 }
-

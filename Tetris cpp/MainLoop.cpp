@@ -1,5 +1,7 @@
 #include "MainLoop.h"
 
+MainLoop * MainLoop::mainLoop = nullptr;
+
 MainLoop::MainLoop()
 {
 }
@@ -28,7 +30,7 @@ void MainLoop::run()
 				WINDOW.close();
 		}
 
-		WINDOW.clear();
+		WINDOW.clear(sf::Color::Green);
 
 		STATIC_ITEM.getGameState()->run();
 
