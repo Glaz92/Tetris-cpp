@@ -1,28 +1,35 @@
 #include "StaticItem.h"
 
-StaticItem * StaticItem::item = nullptr;
-
 StaticItem::StaticItem()
 	: state(State::MainMenu)
 {
-	gameState.emplace(std::make_pair(State::MainMenu,MainMenu::get()));
+//	gameState.emplace(std::make_pair(State::MainMenu,&MainMenu::get()));
+//	gameState.emplace(std::make_pair(State::Game,Game::get()));
 }
 
 
 StaticItem::~StaticItem()
 {
-	delete item;
 }
 
-StaticItem * StaticItem::get()
+StaticItem & StaticItem::get()
 {
-	if (item == nullptr)
-		item = new StaticItem();
+	StaticItem item;
 
 	return item;
 }
 
-GameState * StaticItem::getGameState()
+GameState & StaticItem::getGameState()
 {
-	return gameState[state];
+	switch (state)
+	{
+	case State::MainMenu:
+		return MainMenu::get();
+		break;
+	case State::Game:
+		return Game::get();
+		break;
+	default:
+		break;
+	}
 }

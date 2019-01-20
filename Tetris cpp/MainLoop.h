@@ -5,13 +5,11 @@
 class MainLoop
 {
 private:
-	static MainLoop * mainLoop;
-
 	MainLoop();
 	~MainLoop();
 
 public:
-	static MainLoop * get();
+	static MainLoop & get();
 
 	void run();
 };

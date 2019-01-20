@@ -1,7 +1,5 @@
 #include "MainLoop.h"
 
-MainLoop * MainLoop::mainLoop = nullptr;
-
 MainLoop::MainLoop()
 {
 }
@@ -10,10 +8,9 @@ MainLoop::~MainLoop()
 {
 }
 
-MainLoop * MainLoop::get()
+MainLoop & MainLoop::get()
 {
-	if (mainLoop == nullptr)
-		mainLoop = new MainLoop();
+	static MainLoop mainLoop;
 
 	return mainLoop;
 }
@@ -22,18 +19,18 @@ void MainLoop::run()
 {
 	sf::Event event;
 
-	while (WINDOW.isOpen())
+	while (GetWindow().isOpen())
 	{
-		while (WINDOW.pollEvent(event))
+		while (GetWindow().pollEvent(event))
 		{
 			if (event.type == sf::Event::Closed)
-				WINDOW.close();
+				GetWindow().close();
 		}
 
-		WINDOW.clear(sf::Color::Green);
+		GetWindow().clear(sf::Color::Green);
 
-		STATIC_ITEM.getGameState()->run();
+		GetStaticItem().getGameState().run();
 
-		WINDOW.display();
+		GetWindow().display();
 	}
 }

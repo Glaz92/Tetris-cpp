@@ -5,7 +5,9 @@
 #include "Window.h"
 
 constexpr auto fontSize = 30;
-#define buttonSize sf::Vector2f(180,40)
+const sf::Vector2f buttonSize(180, 40);
+const auto activeColor = sf::Color::Blue;
+const auto idleColor = sf::Color::White;
 
 class Button
 {
@@ -19,5 +21,6 @@ public:
 
 public:
 	void draw();
+	bool isClick();
 };
 

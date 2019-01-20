@@ -1,7 +1,5 @@
 #include "Window.h"
 
-Window * Window::window = nullptr;
-
 Window::Window()
 	: renderWindow(sf::VideoMode(800,600,32),"Tetris", sf::Style::Default)
 {
@@ -9,16 +7,11 @@ Window::Window()
 
 Window::~Window()
 {
-	if (window != nullptr)
-		delete window;
 }
 
-sf::RenderWindow * Window::get()
+sf::RenderWindow & Window::get()
 {
-	if (window == nullptr)
-	{
-		window = new Window();
-	}
+	static Window window;
 
-	return &(window->renderWindow);
+	return window.renderWindow;
 }

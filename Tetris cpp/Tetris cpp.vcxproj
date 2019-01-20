@@ -133,6 +133,7 @@
   <ItemGroup>
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="ConstElements.cpp" />
+    <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainLoop.cpp" />
@@ -143,6 +144,7 @@
   <ItemGroup>
     <ClInclude Include="Button.h" />
     <ClInclude Include="ConstElements.h" />
+    <ClInclude Include="Game.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="MainLoop.h" />
     <ClInclude Include="MainMenu.h" />

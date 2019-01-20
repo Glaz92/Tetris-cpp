@@ -1,14 +1,13 @@
 #pragma once
 #include "GameState.h"
 #include "Button.h"
+#include "StaticItem.h"
 
 class Button;
 
 class MainMenu : public GameState
 {
 private:
-	static MainMenu * mainMenu;
-
 	Button startGame;
 	Button settings;
 	Button exit;
@@ -17,11 +16,12 @@ private:
 	~MainMenu();
 
 public:
-	static MainMenu * get();
+	static MainMenu & get();
 
 	void run();
 
 private:
 	void draw();
+	void buttonsActions();
 
 };

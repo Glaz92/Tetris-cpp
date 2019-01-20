@@ -17,6 +17,29 @@ Button::~Button()
 
 void Button::draw()
 {
-	WINDOW.draw(shape);
-	WINDOW.draw(text);
+	GetWindow().draw(shape);
+	GetWindow().draw(text);
+}
+
+bool Button::isClick()
+{
+	shape.setFillColor(idleColor);
+	sf::Vector2f position = shape.getPosition();
+	sf::Vector2f size = shape.getSize();
+
+	if (sf::Mouse::getPosition(GetWindow()).x > position.x && sf::Mouse::getPosition(GetWindow()).x < position.x + size.x)
+		if (sf::Mouse::getPosition(GetWindow()).y > position.y && sf::Mouse::getPosition(GetWindow()).y < position.y + size.y)
+		{
+			shape.setFillColor(activeColor);
+			if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+			{
+				while (sf::Mouse::isButtonPressed(sf::Mouse::Left));
+				if (sf::Mouse::getPosition(GetWindow()).x > position.x && sf::Mouse::getPosition(GetWindow()).x < position.x + size.x)
+					if (sf::Mouse::getPosition(GetWindow()).y > position.y && sf::Mouse::getPosition(GetWindow()).y < position.y + size.y)
+						return true;
+			}
+		}
+
+
+	return false;
 }
