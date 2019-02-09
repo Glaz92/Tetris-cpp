@@ -131,6 +131,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Block.cpp" />
+    <ClCompile Include="Brick.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="ConstElements.cpp" />
     <ClCompile Include="Game.cpp" />
@@ -142,6 +144,8 @@
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Block.h" />
+    <ClInclude Include="Brick.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="ConstElements.h" />
     <ClInclude Include="Game.h" />

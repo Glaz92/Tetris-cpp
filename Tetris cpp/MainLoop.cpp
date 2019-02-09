@@ -29,7 +29,7 @@ void MainLoop::run()
 
 		GetWindow().clear(sf::Color::Green);
 
-		GetStaticItem().getGameState().run();
+		GetStaticItem().getGameState()->run();
 
 		GetWindow().display();
 	}

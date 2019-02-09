@@ -12,11 +12,9 @@ private:
 	Button settings;
 	Button exit;
 
+public:
 	MainMenu();
 	~MainMenu();
-
-public:
-	static MainMenu & get();
 
 	void run();
 

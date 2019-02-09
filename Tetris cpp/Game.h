@@ -2,10 +2,7 @@
 #include "GameState.h"
 #include "Window.h"
 #include <SFML/Graphics.hpp>
-
-constexpr float brickSize = 15;
-constexpr int boardWidth = 10;
-constexpr int boardHeight = 18;
+#include "Block.h"
 
 class Game :
 	public GameState
@@ -14,13 +11,24 @@ private:
 	sf::RectangleShape gameBoard;
 	sf::RectangleShape nextBrick;
 	sf::RectangleShape scoreBoard;
+	
+	bool pause;
 
+	Block block;
+
+	std::vector<Brick> bricks;
+
+	sf::Clock clock;
+	sf::Time time;
+
+public:
 	Game();
 	~Game();
 
-public:
-	static Game & get();
-
 	void run();
+
+private:
 	void draw();
+	void control();
+	void logic();
 };

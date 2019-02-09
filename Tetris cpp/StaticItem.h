@@ -5,25 +5,24 @@
 #include "Game.h"
 #include <vector>
 #include <map>
+#include <unordered_map>
 
 enum class State { MainMenu, Game };
 
 class StaticItem
 {
 private:
+	std::unordered_map<State, std::shared_ptr<GameState>> gameState;
 	StaticItem();
 	~StaticItem();
 
 public:
 	static StaticItem & get();
 
-private:
-	std::map<State, GameState*> gameState;
-
 public:
 	State state;
 
-	GameState & getGameState();
+	std::shared_ptr<GameState> getGameState();
 };
 
 constexpr auto GetStaticItem = &StaticItem::get;

@@ -9,13 +9,6 @@ MainMenu::~MainMenu()
 {
 }
 
-MainMenu & MainMenu::get()
-{
-	static MainMenu mainMenu;
-
-	return mainMenu;
-}
-
 void MainMenu::run()
 {
 	buttonsActions();

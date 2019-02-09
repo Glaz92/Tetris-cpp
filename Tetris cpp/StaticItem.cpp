@@ -1,10 +1,11 @@
 #include "StaticItem.h"
+#include <iostream>
 
 StaticItem::StaticItem()
 	: state(State::MainMenu)
 {
-//	gameState.emplace(std::make_pair(State::MainMenu,&MainMenu::get()));
-//	gameState.emplace(std::make_pair(State::Game,Game::get()));
+	gameState.emplace(std::make_pair(State::MainMenu, std::make_shared<MainMenu>()));
+	gameState.emplace(std::make_pair(State::Game, std::make_shared<Game>()));
 }
 
 
@@ -14,22 +15,12 @@ StaticItem::~StaticItem()
 
 StaticItem & StaticItem::get()
 {
-	StaticItem item;
+	static StaticItem item;
 
 	return item;
 }
 
-GameState & StaticItem::getGameState()
+std::shared_ptr<GameState> StaticItem::getGameState()
 {
-	switch (state)
-	{
-	case State::MainMenu:
-		return MainMenu::get();
-		break;
-	case State::Game:
-		return Game::get();
-		break;
-	default:
-		break;
-	}
+	return gameState[state];
 }
