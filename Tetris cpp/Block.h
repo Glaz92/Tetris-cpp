@@ -9,7 +9,7 @@ protected:
 
 public:
 	Block();
-	~Block();
+	virtual ~Block();
 
 public:
 	void draw();
@@ -21,5 +21,8 @@ public:
 	std::array<Brick, 4> & getBricks();
 
 	bool checkCollision(std::vector<Brick> otherBricks);
+
+	virtual void rotate() = 0;
+	virtual void setPosition(int x, int y) = 0;
 };
 

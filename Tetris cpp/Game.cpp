@@ -1,10 +1,15 @@
 #include "Game.h"
+#include <algorithm>
+#include <iostream>
 
 Game::Game()
 	: gameBoard(sf::Vector2f(boardWidth * brickSize, boardHeight * brickSize)),
 	  nextBrick(sf::Vector2f(brickSize * 6 + 5, brickSize * 6 + 5)),
 	  scoreBoard(sf::Vector2f(brickSize * 6 + 5,30)),
-	  pause(false)
+	  pause(false),
+	  block { BlockFactory::createBlock() },
+	  nextBlock { BlockFactory::createBlock() },
+	  gameSpeed(300)
 {
 	sf::Color boardColor = sf::Color::White;
 	sf::Color outlineColor = sf::Color::Black;
@@ -33,9 +38,11 @@ Game::~Game()
 void Game::run()
 {
 	time = clock.getElapsedTime();
+	controlTime = controlClock.getElapsedTime();
 
 	draw();
 	control();
+	logic();
 }
 
 void Game::draw()
@@ -43,7 +50,7 @@ void Game::draw()
 	GetWindow().draw(gameBoard);
 	GetWindow().draw(nextBrick);
 	GetWindow().draw(scoreBoard);
-	block.draw();
+	block->draw();
 	for (auto brick : bricks)
 	{
 		brick.draw();
@@ -53,68 +60,99 @@ void Game::draw()
 void Game::control()
 {
 	int minTime = 50;
-
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::P))
+	if (controlTime.asMilliseconds() > minTime)
 	{
-		while (sf::Keyboard::isKeyPressed(sf::Keyboard::P));
-
-		pause = pause ? false : true;
-	}
-
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-	{
-		if (time.asMilliseconds() > minTime)
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::P))
 		{
-			block.moveDown();
-			if (block.checkCollision(bricks))
+			while (sf::Keyboard::isKeyPressed(sf::Keyboard::P));
+
+			pause = pause ? false : true;
+		}
+
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+		{
+			block->moveDown();
+			if (block->checkCollision(bricks))
 			{
-				block.moveUp();
+				block->moveUp();
 
-				bricks.insert(bricks.end(), block.getBricks().begin(), block.getBricks().end());
+				bricks.insert(bricks.end(), block->getBricks().begin(), block->getBricks().end());
 
-				Block b;
-				block = b;
+				block = BlockFactory::createBlock();
 			}
-			clock.restart();
+			controlClock.restart();
 		}
-	}
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-	{
-		if (time.asMilliseconds() > minTime)
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 		{
-			block.moveLeft();
-			if (block.checkCollision(bricks))
-				block.moveRight();
-			clock.restart();
+			block->moveLeft();
+			if (block->checkCollision(bricks))
+				block->moveRight();
+			controlClock.restart();
 		}
-	}
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-	{
-		if (time.asMilliseconds() > minTime)
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 		{
-			block.moveRight();
-			if (block.checkCollision(bricks))
-				block.moveLeft();
-			clock.restart();
+			block->moveRight();
+			if (block->checkCollision(bricks))
+				block->moveLeft();
+			controlClock.restart();
 		}
 	}
 }
 
 void Game::logic()
 {
-	if (time.asMilliseconds() > 200)
+	if (time.asMilliseconds() > gameSpeed)
 	{
-		block.moveDown();
-		if (block.checkCollision(bricks))
+		block->moveDown();
+		if (block->checkCollision(bricks))
 		{
-			block.moveUp();
-			bricks.insert(bricks.end(), block.getBricks().begin(), block.getBricks().end());
+			block->moveUp();
+			bricks.insert(bricks.end(), block->getBricks().begin(), block->getBricks().end());
 
-			Block b;
-			block = b;
+			block = BlockFactory::createBlock();
+			block->setPosition(3, 0);
 		}
 		clock.restart();
+	}
+
+	removeFullLines();
+}
+
+void Game::removeFullLines()
+{
+	std::sort(bricks.begin(), bricks.end(), [](Brick & a, Brick & b) {return a.getLine() > b.getLine(); });
+
+	int counter = 0;
+	auto begin = bricks.begin();
+	auto end = bricks.end();
+	int current = -2;
+
+	for (auto it = bricks.begin(); it != bricks.end(); it++)
+	{
+		if (current != it->getLine())
+		{
+			counter = 1;
+			current = it->getLine();
+			begin = it;
+		}
+		else
+		{
+			end = it;
+			counter++;
+		}
+
+		if (counter == boardWidth)
+		{
+			bricks.erase(begin,++end);
+			for (auto & brick : bricks) 
+			{ 
+				if (brick.getLine() < current)
+					brick.moveDown();
+			}
+			removeFullLines();
+			break;
+		}
 	}
 }

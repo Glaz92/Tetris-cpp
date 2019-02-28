@@ -59,3 +59,8 @@ bool Brick::checkCollision(Brick otherBrick)
 
 	return false;
 }
+
+int Brick::getLine()
+{
+	return static_cast<int>((brick.getPosition().y - boardPosition) / brickSize);
+}

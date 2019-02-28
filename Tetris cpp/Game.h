@@ -2,7 +2,7 @@
 #include "GameState.h"
 #include "Window.h"
 #include <SFML/Graphics.hpp>
-#include "Block.h"
+#include "BlockFactory.h"
 
 class Game :
 	public GameState
@@ -14,12 +14,17 @@ private:
 	
 	bool pause;
 
-	Block block;
+	std::shared_ptr<Block> block;
+	std::shared_ptr<Block> nextBlock;
 
 	std::vector<Brick> bricks;
 
 	sf::Clock clock;
 	sf::Time time;
+	sf::Clock controlClock;
+	sf::Time controlTime;
+
+	int gameSpeed;
 
 public:
 	Game();
@@ -31,4 +36,5 @@ private:
 	void draw();
 	void control();
 	void logic();
+	void removeFullLines();
 };

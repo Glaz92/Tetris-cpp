@@ -1,6 +1,7 @@
 #pragma once
 #include "Window.h"
 #include <SFML/Graphics.hpp>
+#include <vector>
 
 constexpr float brickSize = 15;
 const auto brickColor = sf::Color::Red;
@@ -28,5 +29,5 @@ public:
 
 	void setPosition(float x, float y);
 	bool checkCollision(Brick otherBrick);
+	int getLine();
 };
-
