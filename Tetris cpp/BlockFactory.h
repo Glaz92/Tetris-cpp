@@ -1,5 +1,7 @@
 #pragma once
 #include "BlockLong.h"
+#include "BlockS.h"
+#include "BlockSquare.h"
 #include <memory>
 
 class BlockFactory
@@ -10,6 +12,5 @@ public:
 
 public:
 	static std::shared_ptr<Block> createBlock();
-
 };
 

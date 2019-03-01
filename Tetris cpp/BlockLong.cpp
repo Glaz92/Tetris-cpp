@@ -3,6 +3,7 @@
 
 
 BlockLong::BlockLong()
+	: horizontal(true)
 {
 }
 
@@ -13,6 +14,28 @@ BlockLong::~BlockLong()
 
 void BlockLong::rotate()
 {
+	if (horizontal)
+	{
+		bricks[0].moveUp(); bricks[0].moveUp();
+		bricks[0].moveRight(); bricks[0].moveRight();
+		bricks[1].moveUp();
+		bricks[1].moveRight();
+		bricks[3].moveDown();
+		bricks[3].moveLeft();
+
+		horizontal = false;
+	}
+	else
+	{
+		bricks[0].moveDown(); bricks[0].moveDown();
+		bricks[0].moveLeft(); bricks[0].moveLeft();
+		bricks[1].moveDown();
+		bricks[1].moveLeft();
+		bricks[3].moveUp();
+		bricks[3].moveRight();
+
+		horizontal = true;
+	}
 }
 
 void BlockLong::setPosition(int x, int y)

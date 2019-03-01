@@ -1,18 +1,13 @@
 #pragma once
 #include "Block.h"
-
-class BlockLong :
+class BlockSquare :
 	public Block
 {
-private:
-	bool horizontal;
-
 public:
-	BlockLong();
-	~BlockLong();
+	BlockSquare();
+	~BlockSquare();
 
 public:
 	virtual void rotate() override;
 	virtual void setPosition(int x, int y) override;
 };
-

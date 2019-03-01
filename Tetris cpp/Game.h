@@ -3,28 +3,28 @@
 #include "Window.h"
 #include <SFML/Graphics.hpp>
 #include "BlockFactory.h"
+#include "GameBoard.h"
+#include "ConstElements.h"
 
 class Game :
 	public GameState
 {
 private:
-	sf::RectangleShape gameBoard;
+	sf::RectangleShape board;
 	sf::RectangleShape nextBrick;
 	sf::RectangleShape scoreBoard;
+
+	GameBoard gameBoard;
 	
 	bool pause;
-
-	std::shared_ptr<Block> block;
-	std::shared_ptr<Block> nextBlock;
-
-	std::vector<Brick> bricks;
-
+	
 	sf::Clock clock;
 	sf::Time time;
 	sf::Clock controlClock;
 	sf::Time controlTime;
 
 	int gameSpeed;
+	sf::Text score;
 
 public:
 	Game();
@@ -36,5 +36,4 @@ private:
 	void draw();
 	void control();
 	void logic();
-	void removeFullLines();
 };
