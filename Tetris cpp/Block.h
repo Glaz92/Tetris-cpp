@@ -23,6 +23,7 @@ public:
 	bool checkCollision(std::vector<Brick> otherBricks);
 
 	virtual void rotate() = 0;
+	virtual void derotate() = 0;
 	virtual void setPosition(int x, int y) = 0;
 };
 

@@ -2,6 +2,9 @@
 #include "BlockLong.h"
 #include "BlockS.h"
 #include "BlockSquare.h"
+#include "BlockZ.h"
+#include "BlockL.h"
+#include "BlockJ.h"
 #include <memory>
 
 class BlockFactory

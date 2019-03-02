@@ -28,6 +28,11 @@ void BlockS::rotate()
 	}
 }
 
+void BlockS::derotate()
+{
+	rotate();
+}
+
 void BlockS::setPosition(int x, int y)
 {
 	bricks[0].setPosition(20 + brickSize * (x + 1) + 1, brickSize * y + 20 + 1);

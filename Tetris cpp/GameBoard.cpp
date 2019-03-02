@@ -88,7 +88,7 @@ void GameBoard::rotateBlock()
 {
 	block->rotate();
 	if (block->checkCollision(bricks))
-		block->rotate();
+		block->derotate();
 }
 
 void GameBoard::draw()

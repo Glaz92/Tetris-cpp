@@ -133,9 +133,12 @@
   <ItemGroup>
     <ClCompile Include="Block.cpp" />
     <ClCompile Include="BlockFactory.cpp" />
+    <ClCompile Include="BlockJ.cpp" />
+    <ClCompile Include="BlockL.cpp" />
     <ClCompile Include="BlockLong.cpp" />
     <ClCompile Include="BlockS.cpp" />
     <ClCompile Include="BlockSquare.cpp" />
+    <ClCompile Include="BlockZ.cpp" />
     <ClCompile Include="Brick.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="ConstElements.cpp" />
@@ -151,9 +154,12 @@
   <ItemGroup>
     <ClInclude Include="Block.h" />
     <ClInclude Include="BlockFactory.h" />
+    <ClInclude Include="BlockJ.h" />
+    <ClInclude Include="BlockL.h" />
     <ClInclude Include="BlockLong.h" />
     <ClInclude Include="BlockS.h" />
     <ClInclude Include="BlockSquare.h" />
+    <ClInclude Include="BlockZ.h" />
     <ClInclude Include="Brick.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="ConstElements.h" />

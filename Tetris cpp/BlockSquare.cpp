@@ -12,6 +12,11 @@ void BlockSquare::rotate()
 {
 }
 
+void BlockSquare::derotate()
+{
+	rotate();
+}
+
 void BlockSquare::setPosition(int x, int y)
 {
 	bricks[0].setPosition(20 + brickSize * x + 1, brickSize * y + 20 + 1);
