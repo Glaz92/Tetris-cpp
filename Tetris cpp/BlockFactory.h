@@ -5,6 +5,7 @@
 #include "BlockZ.h"
 #include "BlockL.h"
 #include "BlockJ.h"
+#include "BlockT.h"
 #include <memory>
 
 class BlockFactory

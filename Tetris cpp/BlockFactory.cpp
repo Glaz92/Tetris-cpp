@@ -10,7 +10,7 @@ BlockFactory::~BlockFactory()
 
 std::shared_ptr<Block> BlockFactory::createBlock()
 {
-	switch (std::rand() % 6)
+	switch (std::rand() % 7)
 	{
 	case 1:
 		return std::make_shared<BlockS>();
@@ -22,6 +22,8 @@ std::shared_ptr<Block> BlockFactory::createBlock()
 		return std::make_shared<BlockL>();
 	case 5:
 		return std::make_shared<BlockJ>();
+	case 6:
+		return std::make_shared<BlockT>();
 	default:
 		return std::make_shared<BlockLong>();
 	}

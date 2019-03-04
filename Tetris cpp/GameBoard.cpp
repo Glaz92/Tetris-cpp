@@ -6,6 +6,7 @@ GameBoard::GameBoard()
 	  score { 0 }
 {
 	nextBlock->setPosition(boardWidth + 2, 1);
+	block->setPosition(3,1);
 }
 
 GameBoard::~GameBoard()

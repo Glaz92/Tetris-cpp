@@ -1,7 +1,7 @@
 #include "Window.h"
 
 Window::Window()
-	: renderWindow(sf::VideoMode(800,600,32),"Tetris", sf::Style::Default)
+	: renderWindow(sf::VideoMode(370,400,32),"Tetris", sf::Style::Default)
 {
 }
 

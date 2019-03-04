@@ -5,6 +5,10 @@
 BlockLong::BlockLong()
 	: horizontal(true)
 {
+	for (auto & brick : bricks)
+	{
+		brick.setFillColor(blockLongColor);
+	}
 }
 
 

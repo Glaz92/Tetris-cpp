@@ -1,13 +1,7 @@
 #include "Block.h"
 
-
-
 Block::Block()
 {
-	bricks[0].setPosition(20 + brickSize * 3 + 1, 20 + 1);
-	bricks[1].setPosition(20 + brickSize * 4 + 1, 20 + 1);
-	bricks[2].setPosition(20 + brickSize * 3 + 1, 20 + brickSize + 1);
-	bricks[3].setPosition(20 + brickSize * 4 + 1, 20 + brickSize + 1);
 }
 
 Block::~Block()

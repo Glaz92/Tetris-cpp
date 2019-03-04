@@ -4,6 +4,10 @@
 
 BlockZ::BlockZ()
 {
+	for (auto & brick : bricks)
+	{
+		brick.setFillColor(blockZColor);
+	}
 }
 
 

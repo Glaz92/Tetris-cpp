@@ -3,6 +3,10 @@
 BlockL::BlockL()
 	: state{ 0 }
 {
+	for (auto & brick : bricks)
+	{
+		brick.setFillColor(blockLColor);
+	}
 }
 
 BlockL::~BlockL()
@@ -14,25 +18,26 @@ void BlockL::rotate()
 	switch (state)
 	{
 	case 0:
-		bricks[3].moveUp(); bricks[3].moveUp();
+		bricks[3].moveLeft(); bricks[3].moveLeft();
 		bricks[0].moveRight(); bricks[0].moveDown();
 		bricks[2].moveLeft(); bricks[2].moveUp();
 		state = 1;
 		break;
 	case 1:
-		bricks[3].moveLeft(); bricks[3].moveLeft();
+		bricks[3].moveUp(); bricks[3].moveUp();
+		
 		bricks[0].moveLeft(); bricks[0].moveUp();
 		bricks[2].moveRight(); bricks[2].moveDown();
 		state = 2;
 		break;
 	case 2:
-		bricks[3].moveDown(); bricks[3].moveDown();
+		bricks[3].moveRight(); bricks[3].moveRight();
 		bricks[0].moveRight(); bricks[0].moveDown();
 		bricks[2].moveLeft(); bricks[2].moveUp();
 		state = 3;
 		break;
 	case 3:
-		bricks[3].moveRight(); bricks[3].moveRight();
+		bricks[3].moveDown(); bricks[3].moveDown();
 		bricks[0].moveLeft(); bricks[0].moveUp();
 		bricks[2].moveRight(); bricks[2].moveDown();
 		state = 0;

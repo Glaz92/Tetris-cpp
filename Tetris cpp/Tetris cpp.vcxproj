@@ -138,6 +138,7 @@
     <ClCompile Include="BlockLong.cpp" />
     <ClCompile Include="BlockS.cpp" />
     <ClCompile Include="BlockSquare.cpp" />
+    <ClCompile Include="BlockT.cpp" />
     <ClCompile Include="BlockZ.cpp" />
     <ClCompile Include="Brick.cpp" />
     <ClCompile Include="Button.cpp" />
@@ -159,6 +160,7 @@
     <ClInclude Include="BlockLong.h" />
     <ClInclude Include="BlockS.h" />
     <ClInclude Include="BlockSquare.h" />
+    <ClInclude Include="BlockT.h" />
     <ClInclude Include="BlockZ.h" />
     <ClInclude Include="Brick.h" />
     <ClInclude Include="Button.h" />

@@ -2,6 +2,10 @@
 
 BlockS::BlockS()
 {
+	for (auto & brick : bricks)
+	{
+		brick.setFillColor(blockSColor);
+	}
 }
 
 BlockS::~BlockS()

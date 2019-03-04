@@ -2,6 +2,14 @@
 #include <array>
 #include "Brick.h"
 
+const auto blockLongColor = sf::Color::Red;
+const auto blockLColor = sf::Color::Yellow;
+const auto blockJColor = sf::Color::Magenta;
+const auto blockZColor = sf::Color::Blue;
+const auto blockSColor = sf::Color::Cyan;
+const auto blockSquareColor = sf::Color::Green;
+const auto blockTColor = sf::Color(120,120,120);
+
 class Block
 {
 protected:

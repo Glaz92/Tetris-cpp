@@ -3,7 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 
-constexpr float brickSize = 15;
+constexpr float brickSize = 20;
 const auto brickColor = sf::Color::Red;
 const auto brickOutlineColor = sf::Color::Black;
 
@@ -29,5 +29,6 @@ public:
 
 	void setPosition(float x, float y);
 	bool checkCollision(Brick otherBrick);
+	void setFillColor(const sf::Color & color);
 	int getLine();
 };

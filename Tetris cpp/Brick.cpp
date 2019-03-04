@@ -60,6 +60,11 @@ bool Brick::checkCollision(Brick otherBrick)
 	return false;
 }
 
+void Brick::setFillColor(const sf::Color & color)
+{
+	brick.setFillColor(color);
+}
+
 int Brick::getLine()
 {
 	return static_cast<int>((brick.getPosition().y - boardPosition) / brickSize);
