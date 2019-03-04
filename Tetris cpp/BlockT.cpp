@@ -1,7 +1,5 @@
 #include "BlockT.h"
 
-
-
 BlockT::BlockT()
 	: state{ 0 }
 {
@@ -43,9 +41,9 @@ void BlockT::rotate()
 
 void BlockT::derotate()
 {
-//	rotate();
-//	rotate();
-//	rotate();
+	rotate();
+	rotate();
+	rotate();
 }
 
 void BlockT::setPosition(int x, int y)
