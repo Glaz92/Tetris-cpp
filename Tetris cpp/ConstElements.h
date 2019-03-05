@@ -11,6 +11,6 @@ private:
 
 public:
 	sf::Font font;
-	static ConstElements * get();
+	static ConstElements & get();
 };
 

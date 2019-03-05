@@ -7,8 +7,9 @@ Game::Game()
 	  nextBrick(sf::Vector2f(brickSize * 6 + 5, brickSize * 4 + 5)),
 	  scoreBoard(sf::Vector2f(brickSize * 6 + 5,30)),
 	  pause(false),
-	  gameSpeed(300),
-	  score("0", ConstElements::get()->font, 14)
+	  gameSpeed(500),
+	  score("0", ConstElements::get().font, 14),
+	  pauseText("PAUSE",ConstElements::get().font, 30)
 {
 	sf::Color boardColor = sf::Color::White;
 	sf::Color outlineColor = sf::Color::Black;
@@ -31,6 +32,12 @@ Game::Game()
 
 	score.setFillColor(sf::Color::Black);
 	score.setPosition(scoreBoard.getPosition().x + 5, scoreBoard.getPosition().y + 5);
+
+	pauseText.setFillColor(sf::Color::Black);
+	pauseText.setOrigin(pauseText.getGlobalBounds().width/2,0);
+	pauseText.setPosition(board.getPosition().x + board.getGlobalBounds().width/2, board.getPosition().y + 50);
+	pauseText.setOutlineThickness(1);
+	pauseText.setOutlineColor(outlineColor);
 }
 
 Game::~Game()
@@ -43,8 +50,10 @@ void Game::run()
 	controlTime = controlClock.getElapsedTime();
 
 	draw();
+
+
 	control();
-	logic();
+	if(!pause) logic();
 }
 
 void Game::draw()
@@ -55,20 +64,23 @@ void Game::draw()
 
 	GetWindow().draw(score);
 	gameBoard.draw();
+
+	if (pause) GetWindow().draw(pauseText);
 }
 
 void Game::control()
 {
 	int minTime = 100;
-	if (controlTime.asMilliseconds() > minTime)
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::P))
 	{
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::P))
-		{
-			while (sf::Keyboard::isKeyPressed(sf::Keyboard::P));
+		while (sf::Keyboard::isKeyPressed(sf::Keyboard::P));
 
-			pause = pause ? false : true;
-		}
+		pause = pause ? false : true;
+	}
 
+	if (controlTime.asMilliseconds() > minTime && !pause)
+	{
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 		{
 			gameBoard.rotateBlock();
@@ -105,4 +117,7 @@ void Game::logic()
 
 	gameBoard.removeFullLines();
 	score.setString(std::to_string(gameBoard.getScore()));
+
+	gameSpeed = 500 - gameBoard.getScore() / 100 * 25;
+	gameSpeed = gameSpeed < 100 ? 100 : gameSpeed;
 }

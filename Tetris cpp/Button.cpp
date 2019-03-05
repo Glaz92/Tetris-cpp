@@ -1,7 +1,7 @@
 #include "Button.h"
 
 Button::Button(std::string str, sf::Vector2f position)
-	: text(str,ConstElements::get()->font, fontSize), shape(buttonSize)
+	: text(str,ConstElements::get().font, fontSize), shape(buttonSize)
 {
 	text.setPosition(position);
 	text.setFillColor(sf::Color::Black);

@@ -17,10 +17,9 @@ MainLoop & MainLoop::get()
 
 void MainLoop::run()
 {
-	sf::Event event;
-
 	while (GetWindow().isOpen())
 	{
+		sf::Event event;
 		while (GetWindow().pollEvent(event))
 		{
 			if (event.type == sf::Event::Closed)

@@ -17,6 +17,7 @@ private:
 	GameBoard gameBoard;
 	
 	bool pause;
+	sf::Text pauseText;
 	
 	sf::Clock clock;
 	sf::Time time;
