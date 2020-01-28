@@ -1,6 +1,7 @@
 #include "BlockS.h"
 
-BlockS::BlockS()
+BlockS::BlockS() 
+	: horizontal(true)
 {
 	for (auto & brick : bricks)
 	{
@@ -16,7 +17,7 @@ void BlockS::rotate()
 {
 	if (horizontal)
 	{
-		bricks[2].moveUp(); bricks[0].moveUp();
+		bricks[2].moveUp(); bricks[2].moveUp();
 		bricks[2].moveRight();
 		bricks[3].moveRight();
 
@@ -24,7 +25,7 @@ void BlockS::rotate()
 	}
 	else
 	{
-		bricks[2].moveDown(); bricks[0].moveDown();
+		bricks[2].moveDown(); bricks[2].moveDown();
 		bricks[2].moveLeft(); 
 		bricks[3].moveLeft();
 

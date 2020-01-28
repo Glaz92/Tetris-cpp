@@ -3,6 +3,7 @@
 
 
 BlockZ::BlockZ()
+	: horizontal(true)
 {
 	for (auto & brick : bricks)
 	{
